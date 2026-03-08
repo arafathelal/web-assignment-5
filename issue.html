@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Isue Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <h1>ISSUE TRACKER PAGE</h1>
+
+<body class="font-[Geist]">
+    <!-- <h1>ISSUE TRACKER PAGE</h1> -->
+
+    <!-- Navbar -->
+    <nav class="flex items-center justify-between px-12 py-4">
+
+        <div class="flex items-center gap-3">
+            <img src="assets/github-logo.png" class="w-14 h-14" alt="">
+            <h1 class="text-lg font-semibold">GitHub Issue Tracker</h1>
+        </div>
+
+        <form class="flex items-center gap-3">
+            <input type="search" placeholder="Search Issues"
+                class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+
+            <button type="submit"
+                class="px-5 py-2 rounded-md text-white font-medium bg-[#4A00FF] hover:opacity-90 transition">
+                Sign In
+            </button>
+        </form>
+
+    </nav>
+
+
+
+
 </body>
+
 </html>
