@@ -201,3 +201,28 @@ function filterIssues(type, button) {
   }
 
 }
+
+// Search feature added
+const searchForm = document.getElementById("searchForm");
+const searchInput = document.getElementById("searchInput");
+
+searchForm.addEventListener("submit", async function (e) {
+
+  e.preventDefault();
+
+  const query = searchInput.value.trim();
+
+  if (!query) {
+    displayIssues(allIssues);
+    return;
+  }
+
+  const res = await fetch(
+    `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${query}`
+  );
+
+  const data = await res.json();
+
+  displayIssues(data.data);
+
+});

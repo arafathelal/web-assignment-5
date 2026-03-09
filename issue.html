@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body class="font-[Geist]">
@@ -22,13 +24,16 @@
             <h1 class="text-lg font-semibold">GitHub Issue Tracker</h1>
         </div>
 
-        <form class="flex items-center gap-3">
-            <input type="search" placeholder="Search Issues"
+        <form id="searchForm" class="flex items-center gap-3">
+            <input id="searchInput" type="search" placeholder="Search Issues"
                 class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <button type="submit">
+                <i class="fas fa-search" style="color: rgb(226, 223, 223);"></i>
+            </button>
 
-            <button type="submit"
-                class="px-5 py-2 rounded-md text-white font-medium bg-[#4A00FF] hover:opacity-90 transition">
-                Sign In
+
+            <button class="px-5 py-2 rounded-md text-white font-medium bg-purple-900 hover:opacity-90 transition">
+                New Issue
             </button>
         </form>
 
@@ -38,15 +43,18 @@
 
         <div class="bg-white rounded-xl shadow-sm p-4 flex gap-4">
 
-            <button onclick="filterIssues('all', this)" class="filter-btn px-6 py-2 rounded-md text-white font-medium bg-purple-900">
+            <button onclick="filterIssues('all', this)"
+                class="filter-btn px-6 py-2 rounded-md text-white font-medium bg-purple-900">
                 All
             </button>
 
-            <button onclick="filterIssues('open', this)" class="filter-btn px-6 py-2 rounded-md border border-gray-300 text-gray-600">
+            <button onclick="filterIssues('open', this)"
+                class="filter-btn px-6 py-2 rounded-md border border-gray-300 text-gray-600">
                 Open
             </button>
 
-            <button onclick="filterIssues('closed', this)" class="filter-btn px-6 py-2 rounded-md border border-gray-300 text-gray-600">
+            <button onclick="filterIssues('closed', this)"
+                class="filter-btn px-6 py-2 rounded-md border border-gray-300 text-gray-600">
                 Closed
             </button>
 
@@ -87,7 +95,8 @@
 
     </div>
 
-    <div id="issuesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
+    <div id="issuesContainer"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch mt-5 mx-[240px]">
     </div>
 
 
