@@ -13,8 +13,14 @@ async function loadIssues() {
   displayIssues(allIssues);
 }
 
+function updateIssueCount(issues) {
+  const count = issues.length;
+  document.getElementById("issueCount").innerText = `${count} Issues`;
+}
+
 // Loading issues into cards
 function displayIssues(issues) {
+  updateIssueCount(issues);
   issuesContainer.innerHTML = "";
 
   issues.forEach((issue) => {
@@ -50,9 +56,15 @@ function displayIssues(issues) {
           : label === "help wanted"
             ? "bg-yellow-100 text-yellow-700"
             : "bg-green-100 text-green-600";
+      const icon = label === "bug"
+        ? '<i class="fa-solid fa-bug" style="color: rgb(243, 18, 23);"></i>'
+        : label === "help wanted"
+          ? '<i class="fa-solid fa-life-ring" style="color: rgb(225, 179, 10);"></i>'
+          : '<i class="fa-regular fa-lightbulb text-green-800"></i>';
 
       labelsHTML += `
         <span class="px-3 py-1 text-xs rounded-full whitespace-nowrap ${labelStyle}">
+          ${icon}
           ${label.toUpperCase()}
         </span>
       `;
@@ -226,3 +238,4 @@ searchForm.addEventListener("submit", async function (e) {
   displayIssues(data.data);
 
 });
+

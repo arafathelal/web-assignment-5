@@ -17,29 +17,29 @@
     <!-- <h1>ISSUE TRACKER PAGE</h1> -->
 
     <!-- Navbar -->
-    <nav class="flex items-center justify-between px-12 py-4">
+    <nav class="flex  flex-wrap items-center justify-between px-4 md:px-12 py-4 gap-3">
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 ">
             <img src="assets/github-logo.png" class="w-14 h-14" alt="">
             <h1 class="text-lg font-semibold">GitHub Issue Tracker</h1>
         </div>
 
-        <form id="searchForm" class="flex items-center gap-3">
+        <form id="searchForm" class="flex items-center gap-2">
             <input id="searchInput" type="search" placeholder="Search Issues"
-                class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                class="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
             <button type="submit">
                 <i class="fas fa-search" style="color: rgb(226, 223, 223);"></i>
             </button>
 
 
-            <button class="px-5 py-2 rounded-md text-white font-medium bg-purple-900 hover:opacity-90 transition">
-                New Issue
+            <button class="px-5 py-2 rounded-md text-white font-medium bg-purple-900 hover:opacity-90 transition whitespace-nowrap">
+                + New Issue
             </button>
         </form>
 
     </nav>
 
-    <div class="mx-[245px] mt-10">
+    <div class="mx-4 sm:mx-10 md:mx-20 lg:mx-[245px] mt-10">
 
         <div class="bg-white rounded-xl shadow-sm p-4 flex gap-4">
 
@@ -63,14 +63,14 @@
     </div>
 
 
-    <div class=" mx-[245px] mt-6">
+    <div class=" mx-4 sm:mx-10 md:mx-20 lg:mx-[245px] mt-6">
 
         <div class="bg-white rounded-xl shadow-sm p-6 flex justify-between items-center">
 
             <div class="flex items-center gap-2.5">
                 <img src="assets/Aperture.png" alt="">
                 <div>
-                    <h2 class="text-lg font-semibold">50 Issues</h2>
+                    <h2 id="issueCount" class="text-lg font-semibold">0 Issues</h2>
                     <p class="text-gray-500 text-sm">
                         Track and manage your project issues
                     </p>
@@ -96,7 +96,7 @@
     </div>
 
     <div id="issuesContainer"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch mt-5 mx-[240px]">
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch mt-5 mx-4 sm:mx-10 md:mx-20 lg:mx-[240px]">
     </div>
 
 
@@ -104,7 +104,7 @@
 
     <div id="issueModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
 
-        <div class="bg-white rounded-2xl w-[650px] p-8 shadow-xl">
+        <div class="bg-white rounded-2xl w-[90%] sm:w-[500px] md:w-[650px] p-8 shadow-xl">
 
             <!-- Title -->
             <h2 id="modalTitle" class="text-2xl font-semibold mb-3"></h2>
