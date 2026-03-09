@@ -2,7 +2,15 @@
 const issuesContainer = document.getElementById("issuesContainer");
 const loadingSpinner = document.getElementById("loadingSpinner");
 let allIssues = [];
+function showLoading() {
+  loadingSpinner.classList.remove("hidden");
+}
+
+function hideLoading() {
+  loadingSpinner.classList.add("hidden");
+}
 async function loadIssues() {
+  showLoading();
 
   const res = await fetch(
     "https://phi-lab-server.vercel.app/api/v1/lab/issues"
@@ -10,6 +18,7 @@ async function loadIssues() {
   const data = await res.json();
   // console.log(data)
   allIssues = data.data;
+  hideLoading();
   displayIssues(allIssues);
 }
 
@@ -194,12 +203,15 @@ function closeModal() {
 
 function filterIssues(type, button) {
 
+
+
   document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.classList.remove("bg-purple-900", "text-white");
     btn.classList.add("border", "border-gray-300", "text-gray-600");
   });
   button.classList.add("bg-purple-900", "text-white");
   button.classList.remove("border", "border-gray-300", "text-gray-600");
+  showLoading();
   if (type === "all") {
     displayIssues(allIssues);
   }
@@ -211,6 +223,8 @@ function filterIssues(type, button) {
     const closedIssues = allIssues.filter(issue => issue.status === "closed");
     displayIssues(closedIssues);
   }
+
+  hideLoading();
 
 }
 
