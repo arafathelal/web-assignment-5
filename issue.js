@@ -106,8 +106,75 @@ function displayIssues(issues) {
     `;
 
     issuesContainer.appendChild(card);
+    card.onclick = () => {
+      openModal(issue);
+    };
   });
 }
 
 // Init
 loadIssues();
+
+//Mpdal Function
+function openModal(issue) {
+
+  document.getElementById("modalTitle").innerText = issue.title;
+  document.getElementById("modalDescription").innerText = issue.description;
+
+  document.getElementById("modalAuthor").innerText = issue.author;
+  document.getElementById("modalDate").innerText =
+    new Date(issue.createdAt).toLocaleDateString();
+
+  document.getElementById("modalAssignee").innerText = issue.assignee;
+
+  // Status
+  const status = document.getElementById("modalStatus");
+
+  if (issue.status === "closed") {
+    status.innerText = "Closed";
+    status.className = "bg-purple-500 text-white px-3 py-1 rounded-full text-xs";
+  } else {
+    status.innerText = "Opened";
+    status.className = "bg-green-500 text-white px-3 py-1 rounded-full text-xs";
+  }
+
+  // Priority
+  const priority = document.getElementById("modalPriority");
+
+  priority.innerText = issue.priority.toUpperCase();
+
+  if (issue.priority === "high") {
+    priority.className = "bg-red-500 text-white px-4 py-1 text-xs rounded-full";
+  } else if (issue.priority === "medium") {
+    priority.className = "bg-yellow-400 text-black px-4 py-1 text-xs rounded-full";
+  } else {
+    priority.className = "bg-gray-400 text-white px-4 py-1 text-xs rounded-full";
+  }
+
+  // Labels
+  const labelsContainer = document.getElementById("modalLabels");
+  labelsContainer.innerHTML = "";
+
+  issue.labels.forEach(label => {
+
+    let color =
+      label === "bug"
+        ? "bg-red-100 text-red-500"
+        : label === "help wanted"
+          ? "bg-yellow-100 text-yellow-700"
+          : "bg-green-100 text-green-600";
+
+    labelsContainer.innerHTML += `
+      <span class="px-3 py-1 text-xs rounded-full ${color}">
+        ${label.toUpperCase()}
+      </span>
+    `;
+  });
+
+  document.getElementById("issueModal").classList.remove("hidden");
+  document.getElementById("issueModal").classList.add("flex");
+}
+
+function closeModal() {
+  document.getElementById("issueModal").classList.add("hidden");
+}

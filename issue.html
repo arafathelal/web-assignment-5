@@ -87,10 +87,54 @@
 
     </div>
 
-<div id="issuesContainer"
-     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
-</div>
-<script src="issue.js"></script>
+    <div id="issuesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
+    </div>
+
+
+    <!-- Modal -->
+
+    <div id="issueModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+
+        <div class="bg-white rounded-2xl w-[650px] p-8 shadow-xl">
+
+            <!-- Title -->
+            <h2 id="modalTitle" class="text-2xl font-semibold mb-3"></h2>
+
+            <div class="flex items-center gap-3 text-sm text-gray-500 mb-6">
+                <span id="modalStatus" class="text-white px-3 py-1 rounded-full text-xs"></span>
+
+                <span>• Opened by <span id="modalAuthor"></span></span>
+                <span>• <span id="modalDate"></span></span>
+            </div>
+
+            <div id="modalLabels" class="flex gap-3 mb-6"></div>
+
+            <p id="modalDescription" class="text-gray-500 mb-6"></p>
+
+            <div class="rounded-xl p-5 flex justify-between mb-8">
+
+                <div>
+                    <p class="text-gray-500 text-sm">Assignee:</p>
+                    <p id="modalAssignee" class="font-semibold"></p>
+                </div>
+
+                <div>
+                    <p class="text-gray-500 text-sm">Priority:</p>
+                    <span id="modalPriority" class="px-4 py-1 text-xs rounded-full"></span>
+                </div>
+
+            </div>
+
+            <!-- Close button -->
+            <div class="flex justify-end">
+                <button onclick="closeModal()" class="bg-purple-700 text-white px-6 py-2 rounded-md">
+                    Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <script src="issue.js"></script>
 </body>
 
 </html>
