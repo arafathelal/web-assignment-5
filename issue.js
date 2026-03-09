@@ -1,15 +1,16 @@
 //checking api
 const issuesContainer = document.getElementById("issuesContainer");
 const loadingSpinner = document.getElementById("loadingSpinner");
-
+let allIssues = [];
 async function loadIssues() {
 
   const res = await fetch(
     "https://phi-lab-server.vercel.app/api/v1/lab/issues"
   );
   const data = await res.json();
-  console.log(data)
-  displayIssues(data.data);
+  // console.log(data)
+  allIssues = data.data;
+  displayIssues(allIssues);
 }
 
 // Loading issues into cards
@@ -177,4 +178,26 @@ function openModal(issue) {
 
 function closeModal() {
   document.getElementById("issueModal").classList.add("hidden");
+}
+
+function filterIssues(type, button) {
+
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.classList.remove("bg-purple-900", "text-white");
+    btn.classList.add("border", "border-gray-300", "text-gray-600");
+  });
+  button.classList.add("bg-purple-900", "text-white");
+  button.classList.remove("border", "border-gray-300", "text-gray-600");
+  if (type === "all") {
+    displayIssues(allIssues);
+  }
+  else if (type === "open") {
+    const openIssues = allIssues.filter(issue => issue.status === "open");
+    displayIssues(openIssues);
+  }
+  else if (type === "closed") {
+    const closedIssues = allIssues.filter(issue => issue.status === "closed");
+    displayIssues(closedIssues);
+  }
+
 }

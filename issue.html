@@ -38,15 +38,15 @@
 
         <div class="bg-white rounded-xl shadow-sm p-4 flex gap-4">
 
-            <button class="px-6 py-2 rounded-md text-white font-medium bg-purple-900">
+            <button onclick="filterIssues('all', this)" class="filter-btn px-6 py-2 rounded-md text-white font-medium bg-purple-900">
                 All
             </button>
 
-            <button class="px-6 py-2 rounded-md border border-gray-300 text-gray-600">
+            <button onclick="filterIssues('open', this)" class="filter-btn px-6 py-2 rounded-md border border-gray-300 text-gray-600">
                 Open
             </button>
 
-            <button class="px-6 py-2 rounded-md border border-gray-300 text-gray-600">
+            <button onclick="filterIssues('closed', this)" class="filter-btn px-6 py-2 rounded-md border border-gray-300 text-gray-600">
                 Closed
             </button>
 
